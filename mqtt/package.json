@@ -1,0 +1,4 @@
+{
+    "name": "mqtt",
+    "main": "./mqtt.js"
+}

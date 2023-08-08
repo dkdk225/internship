@@ -1,0 +1,4 @@
+{
+    "name": "encrypt",
+    "main": "./encryption.js"
+}
