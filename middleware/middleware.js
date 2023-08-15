@@ -1,4 +1,6 @@
 const set = require('./set')
+const controllJWT = require('./controllJWT')
 module.exports = {
-    set: set
+    set: set,
+    controllJWT: controllJWT
 }

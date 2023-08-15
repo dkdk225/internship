@@ -1,14 +1,15 @@
 const {Router} = require('express')
+const {JWTController} = require('../jwt_controller')
 
 const path = require('path')
 
 
-const index = Router({
+const login = Router({
     caseSensitive: true,
 
 })
 
-index.get('/',(req, res)=>{
+login.get('/',(req, res)=>{
     res.sendFile(
         'login.html',
         {
@@ -17,11 +18,13 @@ index.get('/',(req, res)=>{
     )
 })
 
-index.post('/',(req,res)=>{
-    console.log(req.body)
-    res.end()
+login.post('/',(req,res)=>{
+    const jwt = JWTController.generateJWT(req.body)
+    console.log(jwt)
+    console.log(JWTController.validateJWT(jwt))
+    res.send(jwt)
 })
 
 
 
-module.exports = index
+module.exports = login
