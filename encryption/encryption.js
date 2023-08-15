@@ -1,4 +1,5 @@
 const {createCipheriv, createDecipheriv, randomBytes} = require('node:crypto')
+const AES = require('./AES')
 const {encryption} = require('../config')
 const {secretKey} = encryption
 
@@ -30,6 +31,7 @@ function decrypt({encryptedPayload, iv, authTag}){
 
 module.exports = {
     encrypt: encrypt,
-    decrypt: decrypt
+    decrypt: decrypt,
+    AES: AES
 }
 
