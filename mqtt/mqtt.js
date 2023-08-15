@@ -1,7 +1,6 @@
 const mqtt = require('mqtt')
 const {mqttUser} = require('../config');
-const {mqttUser} = require('../config')
-module.exports = mqtt.connectAsync(
+const MqttManager = require('./MqttManager');
 
 
 
@@ -13,5 +12,5 @@ module.exports = {
             password:mqttUser.password
         }    
     ),
-);}
-);
+    MqttManager: MqttManager
+}
