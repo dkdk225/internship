@@ -5,10 +5,10 @@ const {randomBytes} = require('node:crypto')
 const tokens = Symbol('tokens')
 
 class JWTController {
-
+    #tokens
     //stores encrypted secret keys in a map as token: key pair
     constructor(){
-        this[tokens] = new Map()
+        this.#tokens = new Map()
     }
 
     generateJWT(payload){
@@ -19,13 +19,13 @@ class JWTController {
             expiresIn: "1h"
         })
         //store encrypted jwt key in map
-        this[tokens].set(token, encrypt(secretKey))
+        this.#tokens.set(token, encrypt(secretKey))
         return token 
     }
 
     validateJWT(token){
         //get the secret key
-        const encryptSecretKey = this[tokens].get(token)
+        const encryptSecretKey = this.#tokens.get(token)
         if(!encryptSecretKey)
             throw Error('No such token')
         const secretKey = decrypt(encryptSecretKey)
