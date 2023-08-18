@@ -1,4 +1,5 @@
 {
-    "name": "model",
-    "main": "./model.js"
+  "name": "model",
+  "main": "./model.js",
+  "exports": "./index.js"
 }

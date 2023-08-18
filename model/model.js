@@ -1,2 +1,6 @@
 const BaseModel = require('./BaseModel')
-module.exports = BaseModel
+const Field = require('./Field')
+module.exports = {
+  Model: BaseModel,
+  Field: Field
+}

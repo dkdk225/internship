@@ -1,4 +1,4 @@
-const secretKey = Symbol('secretKey')
+const {createCipheriv, createDecipheriv, randomBytes} = require('node:crypto')
 class AES{
     //class that provides encription/decription functionality by using 'aes-256-gcm' algorithm
     //constructor takes in a secret key for encryption/decription and stores it privately
