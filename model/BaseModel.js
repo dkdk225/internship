@@ -35,11 +35,11 @@ class BaseModel {
     }
     this.validateModelDict(dict);
     //setup object
-
+    const id = uuidv4();// id should not generate with each publish therefore it's outside of the scope
     const object = this[generateDefaultObject]()
     Object.assign(object, {...dict})
     object.publishMQTT = () => {
-      const id = uuidv4();
+      
       const encryptedObjJSON = this[encrypt](id, object)
       this[mqtt].publish(id, JSON.stringify(encryptedObjJSON));
     };
