@@ -39,7 +39,6 @@ class BaseModel {
     const object = this[generateDefaultObject]()
     Object.assign(object, {...dict})
     object.publishMQTT = () => {
-      
       const encryptedObjJSON = this[encrypt](id, object)
       this[mqtt].publish(id, JSON.stringify(encryptedObjJSON));
     };

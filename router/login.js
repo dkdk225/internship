@@ -20,8 +20,6 @@ login.get('/',(req, res)=>{
 
 login.post('/',(req,res)=>{
     const jwt = JWTController.generateJWT(req.body)
-    console.log(jwt)
-    console.log(JWTController.validateJWT(jwt))
     res.send(jwt)
 })
 
