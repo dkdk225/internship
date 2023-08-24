@@ -61,7 +61,7 @@ class BaseModel {
     }
   }
 
-  static listenMQTT(obj) {
+  static async listenMQTT(obj) {
     this[connectMQTT]()
     //obj is an empty ref which gets updated on new message
     this[mqtt].subscribe();
@@ -87,7 +87,7 @@ class BaseModel {
         return true
       }
     })
-    this[mqtt].listenMessage(proxyObj);
+    await this[mqtt].listenMessage(proxyObj);
   }
 
 }
