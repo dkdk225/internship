@@ -46,6 +46,11 @@ class MqttManager {
   getTopic() {
     return this.#topic;
   }
+  endConnection() {
+    this.#client.end((err) => {
+      if (err) console.log(err);
+    });
+  }
 }
 
 module.exports = MqttManager;
