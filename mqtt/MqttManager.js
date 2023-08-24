@@ -21,10 +21,9 @@ class MqttManager {
       if (err) console.log(err);
     });
   }
-  subscribe() {
-    this.#client.subscribe(`${this.#topic}/+`, (err) => {
-      if (err) console.log(err);
-    });
+  async subscribe() {
+    const result = await this.#client.subscribeAsync(`${this.#topic}/+`) //only returns error
+    return result
   }
 
   listenMessage(refObj) {
