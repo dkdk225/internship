@@ -10,7 +10,7 @@ class MqttManager {
     });
     this.#topic = topic;
   }
-  publish(topicExtension = null, message) {
+  publish(topicExtension, message) {
     if (typeof message !== 'string') {
       JSON.stringify(message)
     }
@@ -39,8 +39,6 @@ class MqttManager {
             branch = branch[topic]
         }
         branch[key] = message.toString('utf-8')
-        console.log('==============================')
-        console.log(refObj)
     })
   }
   getTopic() {
