@@ -10,16 +10,15 @@ class MqttManager {
     });
     this.#topic = topic;
   }
-  publish(topicExtension, message) {
+  async publish(topicExtension, message) {
     if (typeof message !== 'string') {
       JSON.stringify(message)
     }
     const topic = topicExtension
       ? `${this.#topic}/${topicExtension}`
       : this.#topic;
-    this.#client.publish(topic, message, (err, obj) => {
-      if (err) console.log(err);
-    });
+    await this.#client.publishAsync(topic, message);
+
   }
   async subscribe() {
     const result = await this.#client.subscribeAsync(`${this.#topic}/+`) //only returns error
