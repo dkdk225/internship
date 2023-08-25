@@ -25,7 +25,7 @@ class BaseModel {
       "Cannot instantiate abstract class: " + this.constructor.name
     );
   }
-  static create(dict) {
+  static create(dict={}) {
     //returns an instance of declared structure attaching data managemet methods such as
     //publishMQTT
 
