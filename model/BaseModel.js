@@ -38,9 +38,9 @@ class BaseModel {
     const id = uuidv4();// id should not generate with each publish therefore it's outside of the scope
     const object = this[generateDefaultObject]()
     Object.assign(object, {...dict})
-    object.publishMQTT = () => {
+    object.publishMQTT = async () => {
       const encryptedObjJSON = this[encrypt](id, object)
-      this[mqtt].publish(id, JSON.stringify(encryptedObjJSON));
+      await this[mqtt].publish(id, JSON.stringify(encryptedObjJSON));
     };
     return object;
   }
