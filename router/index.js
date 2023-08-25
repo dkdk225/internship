@@ -1,6 +1,5 @@
 const {Router} = require('express')
 const {encrypt, decrypt} = require('../encryption')
-const {mqtt} = require('../mqtt')
 const { v4:uuidv4 } = require('uuid');
 const path = require('path')
 const {MessageModel} = require('../models')

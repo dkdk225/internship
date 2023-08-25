@@ -3,7 +3,6 @@ const {decrypt} = require('../encryption')
 const {publicEncrypt, randomBytes} = require('node:crypto')
 const {encryption} = require('../config')
 const {secretKey} = encryption
-const {mqtt} = require('../mqtt')
 const {MessageModel} = require('../models')
 const {AES} = require('../encryption')
 const messages = {}
