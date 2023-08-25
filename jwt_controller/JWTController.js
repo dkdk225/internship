@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const {encrypt, decrypt} = require('../encryption/encryption')
 const {randomBytes} = require('node:crypto')
 
-const tokens = Symbol('tokens')
 
 class JWTController {
     #tokens
