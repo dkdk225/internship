@@ -25,7 +25,7 @@ class MqttManager {
     return result
   }
 
-  listenMessage(refObj) {
+  listenMessage(refObj, onUpdate=()=>{}) {
     this.#client.on('message', (path, message)=>{
         //create path 
         let branch = refObj
@@ -38,6 +38,7 @@ class MqttManager {
             branch = branch[topic]
         }
         branch[key] = message.toString('utf-8')
+        onUpdate({path, message, refObj})
     })
   }
   getTopic() {
