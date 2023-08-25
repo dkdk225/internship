@@ -61,10 +61,9 @@ class BaseModel {
     }
   }
 
-  static async listenMQTT(obj) {
+  static async listenMQTT(obj, onUpdate) {
     this[connectMQTT]()
     //obj is an empty ref which gets updated on new message
-    this[mqtt].subscribe();
     if (JSON.stringify(obj) !== JSON.stringify({})) {
       throw TypeError (`${this.name} listenMQTT method must take in an empty object reference`)
     }
@@ -87,7 +86,8 @@ class BaseModel {
         return true
       }
     })
-    await this[mqtt].listenMessage(proxyObj);
+    this[mqtt].listenMessage(proxyObj, onUpdate);
+    await this[mqtt].subscribe();
   }
 
 }
